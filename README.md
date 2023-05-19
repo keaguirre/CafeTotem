@@ -7,5 +7,5 @@ Webview como app de escritorio para la web de cliente de CafeHuelen
 
 <div>
     <!-- <img height="400px" width="400px" src="Documentos/ImgTotem.png"></img> -->
-    <img height="400px" width="400px" src="Documentos/totems.jpg"></img>
+    <img height="400px" src="Documentos/totems.jpg"></img>
 </div>
