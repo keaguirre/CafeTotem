@@ -7,10 +7,18 @@
 - [x] Se consulta a la api sin problemas.
 - [x] resolucion de respuestas con la api.
 
-# 18/04/23
+# 18/05/23
 - [x] Asignarse el número de totem.
 - [x] Registrarse, si su mac no está registrada en el sistema (Dependiendo de la respuesta de registro, volverá a consultar o se asignará el número de totem).
 - Se cumple el proceso también para windows(sin probar).
+
+# 21/05/23
+- Se agrega gran parte de manejo de errores, ahora al momento de tener errores de conexion se inicia el archivo **connectionError.html**, si hay errores en la consulta http por la mac
+    También lanzará un error y abrirá el archivo **httpError.html**
+
+# Ideas:
+- Generar localmente un numero de caja especifico para detectar compras hechas en la caja designada para errores de conexión.
+- Generar una tabla de incidencias con sqlite para estadisticas o generar un reporte y tener un observer de conexion que mande al backend ya registrado previamente en el momento de incidencia, el reporte donde quedarán almacenados.
 
 # To do:
 - Probar el sistema en windows.
