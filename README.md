@@ -1,11 +1,1 @@
-# CafeTotem
-Webview como app de escritorio para la web de cliente de CafeHuelen
-
-## Inicializar el proyecto
-- npm install
-- npm start
-
-<div>
-    <!-- <img height="400px" width="400px" src="Documentos/ImgTotem.png"></img> -->
-    <img height="400px" src="Documentos/totems.jpg"></img>
-</div>
+<iframe src="Documentos/index.html" frameborder="0" width="100%" height="500px"></iframe>
