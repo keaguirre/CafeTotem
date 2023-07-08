@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, webContents } = require('electron')
 //Vars-------------
 
 
@@ -10,35 +10,50 @@ function createWindow () {
         title: 'cafeScriptTotem',
         width: 800,
         height: 600,
-        frame: false,
-        fullscreen: true,
+        // frame: false,
+        // fullscreen: true,
         minimizable: false,
-        closable: false,
+        // closable: false,
         alwaysOnTop: true,
         icon: 'Documentos/cafescriptico.png',
-        frame: false,
-        autoHideMenuBar: true,
+        // autoHideMenuBar: true,
         // skipTaskbar: true,
-        kiosk: true
+        // kiosk: true
     })
-
     // Carga la página web.
-    win.loadURL('https://www.google.cl')
+    // win.webContents.print({silent:true})
+     win.loadURL('https://stackblitz.com/edit/angular-print-invoice-e23ppt?file=src%2Fapp%2Fapp.component.ts')
     // win.loadURL('http://localhost:4200')
     // win.loadURL('http://localhost:4200/api-watcher')
+    win.webContents.on('did-finish-load', () => {
+      win.webContents.executeJavaScript(`
+        const originalConsoleLog = console.log;
+        console.log = function(message) {
+          originalConsoleLog.apply(console, arguments);
+          window.postMessage({
+            type: 'console',
+            level: 'log',
+            message: message
+          }, '*');
+        };
+      `);
+    
+      win.webContents.on('console-message', (event, level, message, line, sourceId) => {
+        // console.log(`Mensaje de consola (${level}): ${message}`);
+        if(message == 'print'){
+          console.log('Soy electron y ahora bypaseare el print')
+          win.webContents.print({silent:true})
+
+        }
+      });
+    });
+    
 }
 
   app.whenReady().then(() => {
     createWindow()
   
-    app.on('activate', () => {
-      if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow()
-        globalShortcut.register('alt+tab', () => {
-            return false
-         })
-      }
-    })
+
   })
   
   app.on('window-all-closed', () => {
