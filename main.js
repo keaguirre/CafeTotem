@@ -14,7 +14,7 @@ function createWindow () {
         // fullscreen: true,
         minimizable: false,
         // closable: false,
-        alwaysOnTop: true,
+        // alwaysOnTop: true,
         icon: 'Documentos/cafescriptico.png',
         // autoHideMenuBar: true,
         // skipTaskbar: true,
@@ -22,7 +22,8 @@ function createWindow () {
     })
     // Carga la página web.
     // win.webContents.print({silent:true})
-     win.loadURL('https://stackblitz.com/edit/angular-print-invoice-e23ppt?file=src%2Fapp%2Fapp.component.ts')
+    //  win.loadURL('https://stackblitz.com/edit/angular-print-invoice-e23ppt?file=src%2Fapp%2Fapp.component.ts')
+    win.loadURL('http://192.168.1.83:4200/catalogo')
     // win.loadURL('http://localhost:4200')
     // win.loadURL('http://localhost:4200/api-watcher')
     win.webContents.on('did-finish-load', () => {
@@ -42,8 +43,19 @@ function createWindow () {
         // console.log(`Mensaje de consola (${level}): ${message}`);
         if(message == 'print'){
           console.log('Soy electron y ahora bypaseare el print')
-          win.webContents.print({silent:true})
 
+          // console.log('printers: ',win.webContents.getPrintersAsync().then(resp=> {
+          //   console.log('resp: ',resp)
+          // }))
+          // win.webContents.print()
+          // win.webContents.print({silent:true})
+          const options = {deviceName: 'POS58', silent:true}
+          win.webContents.print(options, (success, errorType)=>{
+            if(!success) console.log(errorType)
+            console.log('su: ', success)                  
+            console.log(': ', errorType)
+          })
+          // win.webContents.print({deviceName: 'POS58', silent:true, }, (err)=> {console.log('err: ', err)})
         }
       });
     });
