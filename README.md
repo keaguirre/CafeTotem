@@ -1,5 +1,7 @@
 # Totem de Autoatención en Cafetería 
-## En desarrollo
+## DEPRECADO
+- Deprecado debido a bug que impide silent-print por ende el software pierde una característica necesaria para el correcto funcionamiento del software
+- Se usa en reemplazo Firefox --kiosk
 
 Este proyecto es una aplicación de autoatención para una cafetería, desarrollada con ElectronJS. Permite a los clientes realizar sus pedidos y pagar de forma autónoma utilizando un terminal con pantalla táctil.
 
@@ -12,6 +14,7 @@ Este proyecto es una aplicación de autoatención para una cafetería, desarroll
 - Si la dirección MAC no está registrada, la aplicación se registra automáticamente enviando una solicitud HTTP al backend y obtiene un número de caja asignado.
 - El número de caja asignado se envía a la página web a través del WebView para que se pueda registrar en las boletas de compra.
 - La aplicación está diseñada para ser intuitiva y de fácil uso para los clientes de la cafetería.
+
 
 ## Requisitos del sistema
 
